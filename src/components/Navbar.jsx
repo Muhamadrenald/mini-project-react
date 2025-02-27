@@ -20,16 +20,19 @@ const Navbar = () => {
       <div className="container flex items-center justify-between px-6 py-4 mx-auto bg-transparent md:px-20 lg:px-32">
         <img src={assets.logo} alt="logo" />
         <ul className="hidden text-white gap-7 md:flex">
-          <a href="#" className="cursor-pointer hover:text-gray-400">
+          <a href="#Home" className="cursor-pointer hover:text-gray-400">
             Home
           </a>
-          <a href="#" className="cursor-pointer hover:text-gray-400">
+          <a href="#About" className="cursor-pointer hover:text-gray-400">
             About
           </a>
-          <a href="#" className="cursor-pointer hover:text-gray-400">
+          <a href="#Projects" className="cursor-pointer hover:text-gray-400">
             Projects
           </a>
-          <a href="#" className="cursor-pointer hover:text-gray-400">
+          <a
+            href="#Testimonials"
+            className="cursor-pointer hover:text-gray-400"
+          >
             Testimonials
           </a>
         </ul>
