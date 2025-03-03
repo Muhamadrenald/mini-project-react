@@ -20,7 +20,7 @@ const Navbar = () => {
       <div className="container flex items-center justify-between px-6 py-4 mx-auto bg-transparent md:px-20 lg:px-32">
         <img src={assets.logo} alt="logo" />
         <ul className="hidden text-white gap-7 md:flex">
-          <a href="#Home" className="cursor-pointer hover:text-gray-400">
+          <a href="#Header" className="cursor-pointer hover:text-gray-400">
             Home
           </a>
           <a href="#About" className="cursor-pointer hover:text-gray-400">
@@ -63,7 +63,7 @@ const Navbar = () => {
         <ul className="flex flex-col items-center gap-2 px-5 mt-5 text-lg font-medium">
           <a
             onClick={() => setShowMobileMenu(false)}
-            href="#Home"
+            href="#Header"
             className="inline-block px-4 py-2 rounded-full"
           >
             Home
