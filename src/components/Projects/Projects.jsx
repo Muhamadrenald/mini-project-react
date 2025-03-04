@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { assets, projectsData } from "../assets/assets";
+import { assets, projectsData } from "../../assets/assets";
 import { motion } from "motion/react";
 
 const Projects = () => {
