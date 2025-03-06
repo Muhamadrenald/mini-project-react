@@ -55,7 +55,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="py-4 mt-10 text-center text-gray-500 border-t border-gray-700">
-        Copyright 2024 &copy; Renald. All rights reserved
+        Copyright 2025 &copy; Renald. All rights reserved
       </div>
     </div>
   );
