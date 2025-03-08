@@ -29,7 +29,8 @@ const Navbar = () => {
 
   return (
     <div className="absolute top-0 left-0 z-10 w-full">
-      <div className="container flex items-center justify-around gap-5 px-6 py-4 mx-auto bg-transparent md:px-20 lg:px-32">
+      {/* <div className="container flex items-center justify-around gap-5 px-6 py-4 mx-auto bg-transparent md:px-20 lg:px-32"> */}
+      <div className="flex items-center justify-between w-full gap-5 px-6 py-4 mx-auto bg-transparent  md:px-20 lg:px-32">
         <img src={assets.logo} alt="logo" />
         <ul className="hidden text-white gap-7 md:flex">
           <Link to="/" className="cursor-pointer hover:text-gray-400">
@@ -55,10 +56,11 @@ const Navbar = () => {
           </button>
         </ul>
         <div className="hidden gap-5 md:flex">
-          <button className="hidden px-8 py-2 bg-white rounded-full md:block hover:bg-gray-500">
-            Sign up
+          <button className="hidden px-8 py-2 bg-white rounded-full md:block hover:bg-gray-300">
+            {/* Sign up */}
+            <Link to="/register">Sign Up</Link>
           </button>
-          <button className="px-6 py-2 bg-white rounded-full hover:bg-gray-500">
+          <button className="px-6 py-2 bg-white rounded-full hover:bg-gray-300">
             <Link to="/login">Login</Link>
           </button>
         </div>
