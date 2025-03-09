@@ -1,0 +1,5 @@
+.login-page {
+  min-height: 100vh;
+  background: url("/wallpaper.png") center/cover no-repeat;
+  color: #ffffff;
+}
