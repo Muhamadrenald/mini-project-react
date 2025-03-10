@@ -12,6 +12,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(""); // State untuk pesan error email
   const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(""); // State untuk pesan error password
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -29,9 +30,21 @@ const Login = () => {
     setEmail(value);
   };
 
-  const handleLogin = async () => {
-    if (emailError || !email) {
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Mencegah reload saat submit
+
+    // Validasi email dan password sebelum melanjutkan
+    if (!email) {
       setEmailError("Please enter a valid email.");
+      return;
+    }
+
+    if (!password) {
+      setPasswordError("Please enter your password.");
+      return;
+    }
+
+    if (emailError) {
       return;
     }
 
@@ -62,6 +75,7 @@ const Login = () => {
         setIsLoading(false);
       }
     } catch (error) {
+      console.error("Error logging in:", error);
       toast.error("An error occurred. Please try again.", {
         position: "top-right",
       });
@@ -85,18 +99,19 @@ const Login = () => {
           </span>
         </p>
 
-        <div className="flex flex-col w-full gap-3">
+        <form className="flex flex-col w-full gap-3" onSubmit={handleLogin}>
           {/* Input Email */}
           <div className="flex flex-col w-full">
             <div className="flex items-center w-full gap-2 p-2 bg-gray-800 rounded-xl">
               <MdAlternateEmail />
               <input
-                type="text"
+                type="email"
                 placeholder="Email address"
                 className="w-full text-sm bg-transparent border-0 outline-none md:text-base"
                 value={email}
                 onChange={(e) => validateEmail(e.target.value)}
                 disabled={isLoading}
+                required
               />
             </div>
             {emailError && (
@@ -114,6 +129,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={isLoading}
+              required
             />
             {showPassword ? (
               <FaRegEyeSlash
@@ -127,19 +143,22 @@ const Login = () => {
               />
             )}
           </div>
-        </div>
+          {passwordError && (
+            <p className="mt-1 text-xs text-red-500">{passwordError}</p>
+          )}
 
-        <button
-          className={`w-full p-2 mt-3 text-sm rounded-xl md:text-base ${
-            isLoading
-              ? "bg-gray-500 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-600"
-          }`}
-          onClick={handleLogin}
-          disabled={isLoading}
-        >
-          {isLoading ? "Logging in..." : "Login"}
-        </button>
+          <button
+            type="submit"
+            className={`w-full p-2 mt-3 text-sm rounded-xl md:text-base ${
+              isLoading
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-blue-500 hover:bg-blue-600"
+            }`}
+            disabled={isLoading}
+          >
+            {isLoading ? "Logging in..." : "Login"}
+          </button>
+        </form>
 
         <div className="relative flex items-center justify-center w-full py-3">
           <div className="w-2/5 h-[2px] bg-gray-800"></div>
