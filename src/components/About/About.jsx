@@ -10,7 +10,7 @@ const About = () => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       className="container flex flex-col items-center justify-center w-full mx-auto overflow-hidden p-14 md:px-20 lg:px-32"
-      id="About"
+      id="about"
     >
       <h1 className="mb-2 text-2xl font-bold sm:text-4xl">
         About{" "}

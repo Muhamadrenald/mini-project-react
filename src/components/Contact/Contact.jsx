@@ -39,7 +39,7 @@ const Contact = () => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       className="w-full p-6 py-20 overflow-hidden text-center lg:px-32"
-      id="Contact"
+      id="contact"
     >
       <h1 className="mb-2 text-2xl font-bold text-center sm:text-4xl">
         Contact

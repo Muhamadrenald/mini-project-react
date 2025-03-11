@@ -10,7 +10,7 @@ const Testimonials = () => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       className="container w-full py-10 mx-auto overflow-hidden lg:px-32"
-      id="Testimonials"
+      id="testimonials"
     >
       <h1 className="mb-2 text-2xl font-bold text-center sm:text-4xl">
         Customer

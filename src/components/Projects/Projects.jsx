@@ -42,7 +42,7 @@ const Projects = () => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       className="container w-full px-6 py-4 pt-20 mx-auto my-20 overflow-hidden md:px-20 lg:px-32"
-      id="Projects"
+      id="projects"
     >
       <h1 className="mb-2 text-2xl font-bold text-center sm:text-4xl">
         Projects{" "}

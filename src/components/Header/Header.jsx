@@ -7,7 +7,7 @@ const Header = () => {
     <div
       className="flex items-center w-full min-h-screen mb-4 overflow-hidden bg-center bg-cover"
       style={{ backgroundImage: "url('/header_img.png')" }}
-      id="Header"
+      id="header"
     >
       <Navbar />
       <motion.div

@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div
       className="w-full px-4 pt-10 overflow-hidden bg-gray-900 md:px-20 lg:px-32"
-      id="Footer"
+      id="footer"
     >
       <div className="container flex flex-col items-start justify-between mx-auto md:flex-row">
         <div className="w-full mb-8 md:w-1/3 md:mb-0">
@@ -20,13 +20,13 @@ const Footer = () => {
         <div className="w-full mb-8 md:w-1/5 md:mb-0">
           <h3 className="mb-4 text-lg font-bold text-white">Company</h3>
           <ul className="flex flex-col gap-2 text-gray-400">
-            <a href="#Header" className="hover:text-white">
+            <a href="#header" className="hover:text-white">
               Home
             </a>
-            <a href="#About" className="hover:text-white">
+            <a href="#about" className="hover:text-white">
               About Us
             </a>
-            <a href="#Contact" className="hover:text-white">
+            <a href="#contact" className="hover:text-white">
               Contact Us
             </a>
             <a href="#" className="hover:text-white">
