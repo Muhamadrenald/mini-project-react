@@ -2,16 +2,18 @@ import { MdAlternateEmail } from "react-icons/md";
 import { FaFingerprint, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import "./index.css"; // Import file CSS
+import useAuthAPI from "../../hooks/useAuthAPI";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(""); // State untuk error email
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  // Gunakan custom hook untuk API
+  const { register, isLoading } = useAuthAPI();
 
   const togglePasswordView = () => setShowPassword(!showPassword);
 
@@ -35,32 +37,13 @@ const Register = () => {
       return;
     }
 
-    setIsLoading(true); // Aktifkan loading
+    // Panggil fungsi register dari custom hook
+    const isSuccess = await register(email, password);
 
-    try {
-      const response = await fetch("https://reqres.in/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success("Registration successful! Redirecting...");
-        setTimeout(() => {
-          navigate("/login");
-        }, 3000);
-      } else {
-        toast.error(data.error || "Registration failed");
-        setIsLoading(false);
-      }
-    } catch (error) {
-      console.error("Error registering:", error);
-      toast.error("An error occurred. Please try again.");
-      setIsLoading(false);
+    if (isSuccess) {
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     }
   };
 

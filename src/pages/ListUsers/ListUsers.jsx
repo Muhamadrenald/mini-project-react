@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import useSearch from "../../hooks/useSearch";
 
 const ListUsers = () => {
   const [users, setUsers] = useState([]);
-  const [filteredUsers, setFilteredUsers] = useState([]);
-  const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(2);
   const navigate = useNavigate();
+
+  // Gunakan custom hook untuk pencarian
+  const { search, setSearch, filteredData: filteredUsers } = useSearch(users);
 
   useEffect(() => {
     const isAuthenticated = !!localStorage.getItem("token");
@@ -23,22 +25,10 @@ const ListUsers = () => {
       .then((response) => response.json())
       .then((data) => {
         setUsers(data.data);
-        setFilteredUsers(data.data); // Default tampil semua user
         setTotalPages(data.total_pages);
       })
       .catch((error) => console.error("Error fetching users:", error));
   };
-
-  // Handle pencarian
-  useEffect(() => {
-    const filtered = users.filter(
-      (user) =>
-        user.first_name.toLowerCase().includes(search.toLowerCase()) ||
-        user.last_name.toLowerCase().includes(search.toLowerCase()) ||
-        user.email.toLowerCase().includes(search.toLowerCase())
-    );
-    setFilteredUsers(filtered);
-  }, [search, users]);
 
   return (
     <div className="p-6">

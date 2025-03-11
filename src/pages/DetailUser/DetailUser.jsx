@@ -21,16 +21,9 @@ const DetailUser = () => {
     fetch(`https://reqres.in/api/users/${id}`)
       .then((response) => response.json())
       .then((data) => {
+        console.log("data", data);
         // Ambil data dummy berdasarkan ID pengguna
-        const dummyData = dummyDataByUserId[id] || {
-          major: "Unknown",
-          address: "Unknown",
-          phone: "Unknown",
-          birthdate: "Unknown",
-          relationship: "Unknown",
-          hobbies: ["Unknown"],
-          location: { lat: 0, lng: 0 }, // Default location
-        };
+        const dummyData = dummyDataByUserId[id];
 
         // Gabungkan data dari API dengan data dummy
         const userData = {

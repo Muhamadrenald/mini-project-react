@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { MdAlternateEmail } from "react-icons/md";
 import { FaFingerprint, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { BsApple } from "react-icons/bs";
 import { FaXTwitter } from "react-icons/fa6";
 import "./index.css"; // Import file CSS
+import useAuthAPI from "../../hooks/useAuthAPI"; // Import custom hook
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,8 +13,10 @@ const Login = () => {
   const [emailError, setEmailError] = useState(""); // State untuk pesan error email
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(""); // State untuk pesan error password
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  // Gunakan custom hook untuk API
+  const { login, isLoading } = useAuthAPI();
 
   const togglePasswordView = () => setShowPassword(!showPassword);
 
@@ -48,38 +50,13 @@ const Login = () => {
       return;
     }
 
-    setIsLoading(true);
+    // Panggil fungsi login dari custom hook
+    const isSuccess = await login(email, password);
 
-    try {
-      const response = await fetch("https://reqres.in/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success("Login successful! Redirecting...", {
-          position: "top-right",
-        });
-        localStorage.setItem("token", data.token);
-
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
-      } else {
-        toast.error(data.error || "Login failed!", { position: "top-right" });
-        setIsLoading(false);
-      }
-    } catch (error) {
-      console.error("Error logging in:", error);
-      toast.error("An error occurred. Please try again.", {
-        position: "top-right",
-      });
-      setIsLoading(false);
+    if (isSuccess) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     }
   };
 
