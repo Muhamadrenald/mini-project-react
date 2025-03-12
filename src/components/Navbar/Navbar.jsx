@@ -104,23 +104,24 @@ const Navbar = () => {
           >
             Testimonials
           </Link>
-          <button
+          <Link
+            to="/list-users"
             onClick={handleListUsersClick}
             className="hover:text-blue-300 bg-transparent border-none"
           >
             List Users
-          </button>
+          </Link>
         </ul>
 
         {/* Tombol Login / Logout */}
         <div className="hidden md:flex items-center gap-4">
           {isAuthenticated ? (
-            <button
+            <Link
               onClick={handleLogout}
               className="bg-red-500 px-4 py-2 rounded-full text-white hover:bg-red-600"
             >
               Logout
-            </button>
+            </Link>
           ) : (
             <>
               <Link
@@ -211,6 +212,7 @@ const Navbar = () => {
             {/* Tombol Login/Logout di Mobile */}
             {isAuthenticated ? (
               <button
+                to="/login"
                 onClick={() => {
                   handleLogout();
                   setShowMobileMenu(false);
