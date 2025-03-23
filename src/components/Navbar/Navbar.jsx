@@ -75,7 +75,7 @@ const Navbar = () => {
         <img src={assets.logo} alt="logo" className="w-24 md:w-32" />
 
         {/* Menu Desktop */}
-        <ul className="hidden md:flex items-center gap-6 text-white">
+        <ul className="items-center hidden gap-6 text-white md:flex">
           <Link
             to="/#header"
             onClick={() => handleScrollToSection("header")}
@@ -107,18 +107,18 @@ const Navbar = () => {
           <Link
             to="/list-users"
             onClick={handleListUsersClick}
-            className="hover:text-blue-300 bg-transparent border-none"
+            className="bg-transparent border-none hover:text-blue-300"
           >
             List Users
           </Link>
         </ul>
 
         {/* Tombol Login / Logout */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="items-center hidden gap-4 md:flex">
           {isAuthenticated ? (
             <Link
               onClick={handleLogout}
-              className="bg-red-500 px-4 py-2 rounded-full text-white hover:bg-red-600"
+              className="px-4 py-2 text-white bg-red-500 rounded-full hover:bg-red-600"
             >
               Logout
             </Link>
@@ -126,13 +126,13 @@ const Navbar = () => {
             <>
               <Link
                 to="/register"
-                className="bg-blue-600 px-4 py-2 rounded-full text-white hover:bg-blue-500"
+                className="px-4 py-2 text-white bg-blue-600 rounded-full hover:bg-blue-500"
               >
                 Sign Up
               </Link>
               <Link
                 to="/login"
-                className="bg-gray-900 px-4 py-2 rounded-full text-white hover:bg-gray-600"
+                className="px-4 py-2 text-white bg-gray-900 rounded-full hover:bg-gray-600"
               >
                 Login
               </Link>
@@ -151,9 +151,9 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {showMobileMenu && (
-        <div className="fixed top-0 left-0 w-full h-screen bg-blue-900 text-white md:hidden z-50 flex flex-col items-center justify-center">
+        <div className="fixed top-0 left-0 z-50 flex flex-col items-center justify-center w-full h-screen text-white bg-blue-900 md:hidden">
           <button
-            className="absolute top-6 right-6 text-white text-xl"
+            className="absolute text-xl text-white top-6 right-6"
             onClick={() => setShowMobileMenu(false)}
           >
             ✕
@@ -204,7 +204,7 @@ const Navbar = () => {
                 handleListUsersClick(e);
                 setShowMobileMenu(false);
               }}
-              className="hover:text-blue-300 bg-transparent border-none"
+              className="bg-transparent border-none hover:text-blue-300"
             >
               List Users
             </button>
@@ -217,7 +217,7 @@ const Navbar = () => {
                   handleLogout();
                   setShowMobileMenu(false);
                 }}
-                className="bg-red-500 px-6 py-2 w-40 rounded-full hover:bg-red-600"
+                className="w-40 px-6 py-2 bg-red-500 rounded-full hover:bg-red-600"
               >
                 Logout
               </button>
@@ -226,14 +226,14 @@ const Navbar = () => {
                 <Link
                   to="/register"
                   onClick={() => setShowMobileMenu(false)}
-                  className="px-6 py-2 w-40 bg-blue-500 rounded-full hover:bg-blue-600 text-center"
+                  className="w-40 px-6 py-2 text-center bg-blue-500 rounded-full hover:bg-blue-600"
                 >
                   Sign Up
                 </Link>
                 <Link
                   to="/login"
                   onClick={() => setShowMobileMenu(false)}
-                  className="px-6 py-2 w-40 bg-gray-700 rounded-full hover:bg-gray-600 text-center"
+                  className="w-40 px-6 py-2 text-center bg-gray-700 rounded-full hover:bg-gray-600"
                 >
                   Login
                 </Link>
